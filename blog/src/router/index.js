@@ -1,30 +1,50 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import {createRouter, createWebHashHistory} from 'vue-router'
 
 const routes = [
-  {
-    path: '/',
-    name: 'dash',
-    component: () => import(/* webpackChunkName: "dash" */ '../views/Dash.vue')
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    {
+        path: '/',
+        name: '',
+        component: () => import(/* webpackChunkName: "contain" */ '../views/layout/contain.vue'),
+        redirect: '/dash',
+        children: [
+            {
+                path: "dash",
+                name: "dash",
+                component: () => import(/* webpackChunkName: "dash" */ '../views/Dash.vue'),
+            },
+            {
+                path: 'home',
+                name: 'home',
+                component: () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue')
+            },
+            {
+                path: 'about',
+                name: 'about',
+                component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+            },
+            {
+                path: "bank",
+                name: "bank",
+                component: () => import(/* webpackChunkName: "bank" */ '../views/layout/blank.vue'),
+                children: [
+                    {
+                        path: "czb",
+                        name: "czb",
+                        component: () => import(/* webpackChunkName: "bank" */ '../views/bank/czb.vue'),
+                    }
+                ]
+            }
+        ]
+    },
+
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+    history: createWebHashHistory(),
+    routes
 })
 
 export default router
