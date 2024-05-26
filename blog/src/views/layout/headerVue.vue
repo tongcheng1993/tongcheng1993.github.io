@@ -1,11 +1,7 @@
 <template>
-    <nav>
-        <router-link to="/">Dash</router-link>
-        |
-        <router-link to="/home">Home</router-link>
-        |
-        <router-link to="/about">About</router-link>
-    </nav>
+    <div>
+
+    </div>
 </template>
 
 <script>

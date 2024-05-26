@@ -6,40 +6,39 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     {
         path: '/',
-        name: '',
         component: () => import(/* webpackChunkName: "contain" */ '../views/layout/contain.vue'),
-        redirect: '/dash',
+
         children: [
             {
                 path: "dash",
-                name: "dash",
-                component: () => import(/* webpackChunkName: "dash" */ '../views/Dash.vue'),
+                component: () => import(/* webpackChunkName: "dash" */ '../views/dash/dash.vue'),
             },
             {
-                path: 'home',
-                name: 'home',
-                component: () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue')
+                path: 'study',
+                component: () => import(/* webpackChunkName: "study" */ '../views/layout/blank.vue'),
+                children: []
             },
             {
-                path: 'about',
-                name: 'about',
-                component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-            },
-            {
-                path: "bank",
-                name: "bank",
-                component: () => import(/* webpackChunkName: "bank" */ '../views/layout/blank.vue'),
+                path: 'it',
+                component: () => import(/* webpackChunkName: "it" */ '../views/layout/blank.vue'),
                 children: [
                     {
-                        path: "czb",
-                        name: "czb",
-                        component: () => import(/* webpackChunkName: "bank" */ '../views/bank/czb.vue'),
+                        path: 'first',
+                        component: () => import(/* webpackChunkName: "first" */ '../views/layout/blank.vue'),
+                    },
+                    {
+                        path: 'second',
+                        component: () => import(/* webpackChunkName: "second" */ '../views/layout/blank.vue'),
+                    },
+                    {
+                        path: 'third',
+                        component: () => import(/* webpackChunkName: "third" */ '../views/layout/blank.vue'),
                     }
                 ]
-            }
+            },
+
         ]
     },
-
 ]
 
 const router = createRouter({
