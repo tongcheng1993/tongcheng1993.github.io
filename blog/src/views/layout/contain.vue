@@ -71,10 +71,23 @@
     import HeaderVue from './headerVue'
     import FooterVue from './footerVue'
     import AsideVue from './asideVue'
+    import { Layout as ALayout,LayoutHeader as ALayoutHeader,LayoutSider as ALayoutSider,LayoutContent as ALayoutContent,LayoutFooter as ALayoutFooter} from 'ant-design-vue'
+
+    import {Menu as AMenu,MenuItem as AMenuItem} from  'ant-design-vue'
+    import {Breadcrumb as ABreadcrumb,BreadcrumbItem as ABreadcrumbItem} from  'ant-design-vue'
     import { UserOutlined, VideoCameraOutlined, UploadOutlined,BarChartOutlined,CloudOutlined,AppstoreOutlined,TeamOutlined,ShopOutlined } from '@ant-design/icons-vue';
     export default {
         name: "contain",
         components: {
+            ALayout,
+            ALayoutHeader,
+            ALayoutSider,
+            ALayoutContent,
+            ALayoutFooter,
+            AMenu,
+            AMenuItem,
+            ABreadcrumb,
+            ABreadcrumbItem,
             HeaderVue,
             FooterVue,
             AsideVue,

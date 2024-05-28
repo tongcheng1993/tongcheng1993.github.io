@@ -5,11 +5,14 @@
 
 <script>
 
+    import {Button as AButton,} from 'ant-design-vue'
 
     export default {
         name: "dash",
         // 引用组件
-        components: {},
+        components: {
+            AButton,
+        },
         // 上级组件向本页面传递的参数
         props: {},
         // 本页面计算属性
