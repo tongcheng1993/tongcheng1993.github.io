@@ -33,7 +33,7 @@ const routes = [
                         children: [
                             {
                                 path: 'chengxuyuan',
-                                component: () => import(/* webpackChunkName: "first" */ '../views/it/first/chengxuyuan.vue'),
+                                component: () => import(/* webpackChunkName: "chengxuyuan" */ '../views/it/first/chengxuyuan.vue'),
                             }
                         ]
                     },
@@ -43,7 +43,7 @@ const routes = [
                         children: [
                             {
                                 path: 'ruanjianshejishi',
-                                component: () => import(/* webpackChunkName: "first" */ '../views/it/second/ruanjianshejishi.vue'),
+                                component: () => import(/* webpackChunkName: "ruanjianshejishi" */ '../views/it/second/ruanjianshejishi.vue'),
                             }
                         ]
                     },
@@ -53,7 +53,7 @@ const routes = [
                         children: [
                             {
                                 path: 'xitongjiagoushi',
-                                component: () => import(/* webpackChunkName: "first" */ '../views/it/third/xitongjiagoushi.vue'),
+                                component: () => import(/* webpackChunkName: "xitongjiagoushi" */ '../views/it/third/xitongjiagoushi.vue'),
                             }
                         ]
                     }
