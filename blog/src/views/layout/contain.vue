@@ -1,51 +1,99 @@
 <template>
     <div>
         <a-layout>
-
             <a-layout-header>
                 <router-link to="/">
-                    <div class="logo">
-                        /
-                    </div>
+                    <div class="logo">/</div>
                 </router-link>
             </a-layout-header>
             <a-layout>
                 <a-layout-sider>
-                    <a-menu v-model:selectedKeys="selectedKeys" theme="dark">
-                        <a-menu-item key="1">
+                    <a-menu>
+                        <a-menu-item key="/dash">
                             <router-link to="/dash">
                                 <user-outlined/>
-                                <span class="nav-text">dash</span>
+                                <span class="nav-text">首页</span>
                             </router-link>
                         </a-menu-item>
-                        <a-menu-item key="2">
-                            <video-camera-outlined/>
-                            <span class="nav-text">nav 2</span>
-                        </a-menu-item>
-                        <a-menu-item key="3">
-                            <upload-outlined/>
-                            <span class="nav-text">nav 3</span>
-                        </a-menu-item>
-                        <a-menu-item key="4">
-                            <bar-chart-outlined/>
-                            <span class="nav-text">nav 4</span>
-                        </a-menu-item>
-                        <a-menu-item key="5">
-                            <cloud-outlined/>
-                            <span class="nav-text">nav 5</span>
-                        </a-menu-item>
-                        <a-menu-item key="6">
-                            <appstore-outlined/>
-                            <span class="nav-text">nav 6</span>
-                        </a-menu-item>
-                        <a-menu-item key="7">
-                            <team-outlined/>
-                            <span class="nav-text">nav 7</span>
-                        </a-menu-item>
-                        <a-menu-item key="8">
-                            <shop-outlined/>
-                            <span class="nav-text">nav 8</span>
-                        </a-menu-item>
+                        <a-sub-menu>
+                            <template #icon>
+                                <AppstoreOutlined/>
+                            </template>
+                            <template #title>学习</template>
+                            <a-menu-item key="/study/college_english">
+                                <router-link to="/study/college_english">
+                                    <video-camera-outlined/>
+                                    <span class="nav-text">大学英语</span>
+                                </router-link>
+                            </a-menu-item>
+                        </a-sub-menu>
+<!--                        <a-sub-menu>-->
+<!--                            <template #icon>-->
+<!--                                <AppstoreOutlined/>-->
+<!--                            </template>-->
+<!--                            <template #title>软考</template>-->
+<!--                            <a-sub-menu>-->
+<!--                                <template #icon>-->
+<!--                                    <AppstoreOutlined/>-->
+<!--                                </template>-->
+<!--                                <template #title>初级</template>-->
+<!--                                <a-menu-item key="2">-->
+<!--                                    <router-link to="/it/first/">-->
+<!--                                        <video-camera-outlined/>-->
+<!--                                        <span class="nav-text">程序员</span>-->
+<!--                                    </router-link>-->
+<!--                                </a-menu-item>-->
+<!--                            </a-sub-menu>-->
+<!--                            <a-sub-menu>-->
+<!--                                <template #icon>-->
+<!--                                    <AppstoreOutlined/>-->
+<!--                                </template>-->
+<!--                                <template #title>中级</template>-->
+<!--                                <a-menu-item key="2">-->
+<!--                                    <router-link to="/study/college_english">-->
+<!--                                        <video-camera-outlined/>-->
+<!--                                        <span class="nav-text">college_english</span>-->
+<!--                                    </router-link>-->
+<!--                                </a-menu-item>-->
+<!--                            </a-sub-menu>-->
+<!--                            <a-sub-menu>-->
+<!--                                <template #icon>-->
+<!--                                    <AppstoreOutlined/>-->
+<!--                                </template>-->
+<!--                                <template #title>高级</template>-->
+<!--                                <a-menu-item key="2">-->
+<!--                                    <router-link to="/study/college_english">-->
+<!--                                        <video-camera-outlined/>-->
+<!--                                        <span class="nav-text">college_english</span>-->
+<!--                                    </router-link>-->
+<!--                                </a-menu-item>-->
+<!--                            </a-sub-menu>-->
+<!--                        </a-sub-menu>-->
+
+<!--                        <a-menu-item key="3">-->
+<!--                            <upload-outlined/>-->
+<!--                            <span class="nav-text">nav 3</span>-->
+<!--                        </a-menu-item>-->
+<!--                        <a-menu-item key="4">-->
+<!--                            <bar-chart-outlined/>-->
+<!--                            <span class="nav-text">nav 4</span>-->
+<!--                        </a-menu-item>-->
+<!--                        <a-menu-item key="5">-->
+<!--                            <cloud-outlined/>-->
+<!--                            <span class="nav-text">nav 5</span>-->
+<!--                        </a-menu-item>-->
+<!--                        <a-menu-item key="6">-->
+<!--                            <appstore-outlined/>-->
+<!--                            <span class="nav-text">nav 6</span>-->
+<!--                        </a-menu-item>-->
+<!--                        <a-menu-item key="7">-->
+<!--                            <team-outlined/>-->
+<!--                            <span class="nav-text">nav 7</span>-->
+<!--                        </a-menu-item>-->
+<!--                        <a-menu-item key="8">-->
+<!--                            <shop-outlined/>-->
+<!--                            <span class="nav-text">nav 8</span>-->
+<!--                        </a-menu-item>-->
                     </a-menu>
                 </a-layout-sider>
                 <a-layout style="padding: 0 24px 24px">
@@ -55,12 +103,9 @@
                         <a-breadcrumb-item>App</a-breadcrumb-item>
                     </a-breadcrumb>
                     <a-layout-content>
-
                         <router-view/>
                     </a-layout-content>
                 </a-layout>
-
-
             </a-layout>
             <a-layout-footer> Ant Design ©2018 Created by Ant UED</a-layout-footer>
         </a-layout>
@@ -71,11 +116,32 @@
     import HeaderVue from './headerVue'
     import FooterVue from './footerVue'
     import AsideVue from './asideVue'
-    import { Layout as ALayout,LayoutHeader as ALayoutHeader,LayoutSider as ALayoutSider,LayoutContent as ALayoutContent,LayoutFooter as ALayoutFooter} from 'ant-design-vue'
+    import {
+        Layout as ALayout,
+        LayoutHeader as ALayoutHeader,
+        LayoutSider as ALayoutSider,
+        LayoutContent as ALayoutContent,
+        LayoutFooter as ALayoutFooter
+    } from 'ant-design-vue'
 
-    import {Menu as AMenu,MenuItem as AMenuItem} from  'ant-design-vue'
-    import {Breadcrumb as ABreadcrumb,BreadcrumbItem as ABreadcrumbItem} from  'ant-design-vue'
-    import { UserOutlined, VideoCameraOutlined, UploadOutlined,BarChartOutlined,CloudOutlined,AppstoreOutlined,TeamOutlined,ShopOutlined } from '@ant-design/icons-vue';
+    import {
+        Menu as AMenu,
+        MenuItemGroup as AMenuItemGroup,
+        SubMenu as ASubMenu,
+        MenuItem as AMenuItem
+    } from 'ant-design-vue'
+    import {Breadcrumb as ABreadcrumb, BreadcrumbItem as ABreadcrumbItem} from 'ant-design-vue'
+    import {
+        UserOutlined,
+        VideoCameraOutlined,
+        UploadOutlined,
+        BarChartOutlined,
+        CloudOutlined,
+        AppstoreOutlined,
+        TeamOutlined,
+        ShopOutlined
+    } from '@ant-design/icons-vue';
+
     export default {
         name: "contain",
         components: {
@@ -85,6 +151,8 @@
             ALayoutContent,
             ALayoutFooter,
             AMenu,
+            AMenuItemGroup,
+            ASubMenu,
             AMenuItem,
             ABreadcrumb,
             ABreadcrumbItem,

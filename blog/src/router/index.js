@@ -16,7 +16,12 @@ const routes = [
             {
                 path: 'study',
                 component: () => import(/* webpackChunkName: "study" */ '../views/layout/blank.vue'),
-                children: []
+                children: [
+                    {
+                        path: 'college_english',
+                        component: () => import(/* webpackChunkName: "college_english" */ '../views/study/college_english.vue'),
+                    },
+                ]
             },
             {
                 path: 'it',
