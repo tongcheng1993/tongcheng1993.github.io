@@ -30,14 +30,32 @@ const routes = [
                     {
                         path: 'first',
                         component: () => import(/* webpackChunkName: "first" */ '../views/layout/blank.vue'),
+                        children: [
+                            {
+                                path: 'chengxuyuan',
+                                component: () => import(/* webpackChunkName: "first" */ '../views/it/first/chengxuyuan.vue'),
+                            }
+                        ]
                     },
                     {
                         path: 'second',
                         component: () => import(/* webpackChunkName: "second" */ '../views/layout/blank.vue'),
+                        children: [
+                            {
+                                path: 'ruanjianshejishi',
+                                component: () => import(/* webpackChunkName: "first" */ '../views/it/second/ruanjianshejishi.vue'),
+                            }
+                        ]
                     },
                     {
                         path: 'third',
                         component: () => import(/* webpackChunkName: "third" */ '../views/layout/blank.vue'),
+                        children: [
+                            {
+                                path: 'xitongjiagoushi',
+                                component: () => import(/* webpackChunkName: "first" */ '../views/it/third/xitongjiagoushi.vue'),
+                            }
+                        ]
                     }
                 ]
             },

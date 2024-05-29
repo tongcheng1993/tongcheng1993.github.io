@@ -27,73 +27,48 @@
                                 </router-link>
                             </a-menu-item>
                         </a-sub-menu>
-<!--                        <a-sub-menu>-->
-<!--                            <template #icon>-->
-<!--                                <AppstoreOutlined/>-->
-<!--                            </template>-->
-<!--                            <template #title>软考</template>-->
-<!--                            <a-sub-menu>-->
-<!--                                <template #icon>-->
-<!--                                    <AppstoreOutlined/>-->
-<!--                                </template>-->
-<!--                                <template #title>初级</template>-->
-<!--                                <a-menu-item key="2">-->
-<!--                                    <router-link to="/it/first/">-->
-<!--                                        <video-camera-outlined/>-->
-<!--                                        <span class="nav-text">程序员</span>-->
-<!--                                    </router-link>-->
-<!--                                </a-menu-item>-->
-<!--                            </a-sub-menu>-->
-<!--                            <a-sub-menu>-->
-<!--                                <template #icon>-->
-<!--                                    <AppstoreOutlined/>-->
-<!--                                </template>-->
-<!--                                <template #title>中级</template>-->
-<!--                                <a-menu-item key="2">-->
-<!--                                    <router-link to="/study/college_english">-->
-<!--                                        <video-camera-outlined/>-->
-<!--                                        <span class="nav-text">college_english</span>-->
-<!--                                    </router-link>-->
-<!--                                </a-menu-item>-->
-<!--                            </a-sub-menu>-->
-<!--                            <a-sub-menu>-->
-<!--                                <template #icon>-->
-<!--                                    <AppstoreOutlined/>-->
-<!--                                </template>-->
-<!--                                <template #title>高级</template>-->
-<!--                                <a-menu-item key="2">-->
-<!--                                    <router-link to="/study/college_english">-->
-<!--                                        <video-camera-outlined/>-->
-<!--                                        <span class="nav-text">college_english</span>-->
-<!--                                    </router-link>-->
-<!--                                </a-menu-item>-->
-<!--                            </a-sub-menu>-->
-<!--                        </a-sub-menu>-->
-
-<!--                        <a-menu-item key="3">-->
-<!--                            <upload-outlined/>-->
-<!--                            <span class="nav-text">nav 3</span>-->
-<!--                        </a-menu-item>-->
-<!--                        <a-menu-item key="4">-->
-<!--                            <bar-chart-outlined/>-->
-<!--                            <span class="nav-text">nav 4</span>-->
-<!--                        </a-menu-item>-->
-<!--                        <a-menu-item key="5">-->
-<!--                            <cloud-outlined/>-->
-<!--                            <span class="nav-text">nav 5</span>-->
-<!--                        </a-menu-item>-->
-<!--                        <a-menu-item key="6">-->
-<!--                            <appstore-outlined/>-->
-<!--                            <span class="nav-text">nav 6</span>-->
-<!--                        </a-menu-item>-->
-<!--                        <a-menu-item key="7">-->
-<!--                            <team-outlined/>-->
-<!--                            <span class="nav-text">nav 7</span>-->
-<!--                        </a-menu-item>-->
-<!--                        <a-menu-item key="8">-->
-<!--                            <shop-outlined/>-->
-<!--                            <span class="nav-text">nav 8</span>-->
-<!--                        </a-menu-item>-->
+                        <a-sub-menu>
+                            <template #icon>
+                                <AppstoreOutlined/>
+                            </template>
+                            <template #title>软考</template>
+                            <a-sub-menu>
+                                <template #icon>
+                                    <upload-outlined/>
+                                </template>
+                                <template #title>初级</template>
+                                <a-menu-item key="/it/first/chengxuyuan">
+                                    <router-link to="/it/first/chengxuyuan">
+                                        <bar-chart-outlined/>
+                                        <span class="nav-text">程序员</span>
+                                    </router-link>
+                                </a-menu-item>
+                            </a-sub-menu>
+                            <a-sub-menu>
+                                <template #icon>
+                                    <cloud-outlined/>
+                                </template>
+                                <template #title>中级</template>
+                                <a-menu-item key="/it/second/ruanjianshejishi">
+                                    <router-link to="/it/second/ruanjianshejishi">
+                                        <appstore-outlined/>
+                                        <span class="nav-text">软件设计师</span>
+                                    </router-link>
+                                </a-menu-item>
+                            </a-sub-menu>
+                            <a-sub-menu>
+                                <template #icon>
+                                    <AppstoreOutlined/>
+                                </template>
+                                <template #title>高级</template>
+                                <a-menu-item key="/it/third/xitongjiagoushi">
+                                    <router-link to="/it/third/xitongjiagoushi">
+                                        <shop-outlined/>
+                                        <span class="nav-text">系统架构师</span>
+                                    </router-link>
+                                </a-menu-item>
+                            </a-sub-menu>
+                        </a-sub-menu>
                     </a-menu>
                 </a-layout-sider>
                 <a-layout style="padding: 0 24px 24px">
