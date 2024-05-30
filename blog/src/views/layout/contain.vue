@@ -7,7 +7,7 @@
                 </router-link>
             </a-layout-header>
             <a-layout>
-                <a-layout-sider>
+                <a-layout-side>
                     <a-menu>
                         <a-menu-item key="/dash">
                             <router-link to="/dash">
@@ -70,13 +70,8 @@
                             </a-sub-menu>
                         </a-sub-menu>
                     </a-menu>
-                </a-layout-sider>
-                <a-layout style="padding: 0 24px 24px">
-                    <a-breadcrumb style="margin: 16px 0">
-                        <a-breadcrumb-item>Home</a-breadcrumb-item>
-                        <a-breadcrumb-item>List</a-breadcrumb-item>
-                        <a-breadcrumb-item>App</a-breadcrumb-item>
-                    </a-breadcrumb>
+                </a-layout-side>
+                <a-layout>
                     <a-layout-content>
                         <router-view/>
                     </a-layout-content>
@@ -88,13 +83,11 @@
 </template>
 
 <script>
-    import HeaderVue from './headerVue'
-    import FooterVue from './footerVue'
-    import AsideVue from './asideVue'
+
     import {
         Layout as ALayout,
         LayoutHeader as ALayoutHeader,
-        LayoutSider as ALayoutSider,
+        LayoutSider as ALayoutSide,
         LayoutContent as ALayoutContent,
         LayoutFooter as ALayoutFooter
     } from 'ant-design-vue'
@@ -122,7 +115,7 @@
         components: {
             ALayout,
             ALayoutHeader,
-            ALayoutSider,
+            ALayoutSide,
             ALayoutContent,
             ALayoutFooter,
             AMenu,
@@ -131,9 +124,6 @@
             AMenuItem,
             ABreadcrumb,
             ABreadcrumbItem,
-            HeaderVue,
-            FooterVue,
-            AsideVue,
             UserOutlined,
             VideoCameraOutlined,
             UploadOutlined,
@@ -144,9 +134,7 @@
             ShopOutlined
         },
         data() {
-            return {
-                selectedKeys: [2],
-            }
+            return {}
         },
     }
 </script>
