@@ -1,9 +1,7 @@
 <template>
     <div>
         <h1>1</h1>
-        <h2>
-            some strategies for learning english
-        </h2>
+        <p style="font-size: 20px;text-align: center">some <strong> strategies </strong>for learning english</p>
         <p>
             learning english is <strong>by no means</strong> easy. it takes great <strong>diligence</strong> and
             <strong>prolonged effort</strong>.

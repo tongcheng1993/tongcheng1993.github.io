@@ -11,35 +11,35 @@
                     <a-menu>
                         <a-menu-item key="/dash">
                             <router-link to="/dash">
-                                <user-outlined/>
+                                <cloud-outlined/>
                                 <span class="nav-text">首页</span>
                             </router-link>
                         </a-menu-item>
                         <a-sub-menu>
                             <template #icon>
-                                <AppstoreOutlined/>
+                                <cloud-outlined/>
                             </template>
                             <template #title>学习</template>
                             <a-menu-item key="/study/college_english">
                                 <router-link to="/study/college_english">
-                                    <video-camera-outlined/>
+                                    <cloud-outlined/>
                                     <span class="nav-text">大学英语</span>
                                 </router-link>
                             </a-menu-item>
                         </a-sub-menu>
                         <a-sub-menu>
                             <template #icon>
-                                <AppstoreOutlined/>
+                                <cloud-outlined/>
                             </template>
                             <template #title>软考</template>
                             <a-sub-menu>
                                 <template #icon>
-                                    <upload-outlined/>
+                                    <cloud-outlined/>
                                 </template>
                                 <template #title>初级</template>
                                 <a-menu-item key="/it/first/chengxuyuan">
                                     <router-link to="/it/first/chengxuyuan">
-                                        <bar-chart-outlined/>
+                                        <cloud-outlined/>
                                         <span class="nav-text">程序员</span>
                                     </router-link>
                                 </a-menu-item>
@@ -51,19 +51,19 @@
                                 <template #title>中级</template>
                                 <a-menu-item key="/it/second/ruanjianshejishi">
                                     <router-link to="/it/second/ruanjianshejishi">
-                                        <appstore-outlined/>
+                                        <cloud-outlined/>
                                         <span class="nav-text">软件设计师</span>
                                     </router-link>
                                 </a-menu-item>
                             </a-sub-menu>
                             <a-sub-menu>
                                 <template #icon>
-                                    <AppstoreOutlined/>
+                                    <cloud-outlined/>
                                 </template>
                                 <template #title>高级</template>
                                 <a-menu-item key="/it/third/xitongjiagoushi">
                                     <router-link to="/it/third/xitongjiagoushi">
-                                        <shop-outlined/>
+                                        <cloud-outlined/>
                                         <span class="nav-text">系统架构师</span>
                                     </router-link>
                                 </a-menu-item>
@@ -77,7 +77,7 @@
                     </a-layout-content>
                 </a-layout>
             </a-layout>
-            <a-layout-footer> Ant Design ©2018 Created by Ant UED</a-layout-footer>
+            <a-layout-footer style="text-align: center" >Ant Design ©2018 Created by Ant UED</a-layout-footer>
         </a-layout>
     </div>
 </template>
@@ -94,20 +94,11 @@
 
     import {
         Menu as AMenu,
-        MenuItemGroup as AMenuItemGroup,
         SubMenu as ASubMenu,
         MenuItem as AMenuItem
     } from 'ant-design-vue'
-    import {Breadcrumb as ABreadcrumb, BreadcrumbItem as ABreadcrumbItem} from 'ant-design-vue'
     import {
-        UserOutlined,
-        VideoCameraOutlined,
-        UploadOutlined,
-        BarChartOutlined,
         CloudOutlined,
-        AppstoreOutlined,
-        TeamOutlined,
-        ShopOutlined
     } from '@ant-design/icons-vue';
 
     export default {
@@ -118,20 +109,14 @@
             ALayoutSide,
             ALayoutContent,
             ALayoutFooter,
+
             AMenu,
-            AMenuItemGroup,
             ASubMenu,
             AMenuItem,
-            ABreadcrumb,
-            ABreadcrumbItem,
-            UserOutlined,
-            VideoCameraOutlined,
-            UploadOutlined,
-            BarChartOutlined,
+
+
             CloudOutlined,
-            AppstoreOutlined,
-            TeamOutlined,
-            ShopOutlined
+
         },
         data() {
             return {}
@@ -141,12 +126,12 @@
 
 <style scoped>
     .ant-layout-sider {
-        background: #3499ec;
+        background: #7dbcea;
     }
 
     .ant-layout-footer {
         color: #fff;
-        background: #7dbcea;
+        background: #3499ec;
     }
 
     .ant-layout-header {
