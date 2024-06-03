@@ -7,7 +7,7 @@
             <strong>prolonged effort</strong>.
         </p>
         <p>
-            nevertheless,while you cannot expect to gain a good command of english without sustained hard work,there are
+            <strong>nevertheless</strong>,while you cannot <strong>expect</strong> to gain a good command of english without sustained hard work,there are
             various helpful learning strategies you can employ to make the task easier.here are some of them.
         </p>
         <p>
