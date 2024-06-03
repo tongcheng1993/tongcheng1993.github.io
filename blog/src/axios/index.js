@@ -14,7 +14,7 @@ axios1.interceptors.request.use((request) => {
 
 
 axios1.interceptors.response.use((response) => {
-   console.log(response.status)
+
 
     return response
 

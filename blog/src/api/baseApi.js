@@ -1,7 +1,7 @@
 import {get} from "../axios"
 
 
-export function f(param) {
+export function getInfo(param) {
     let url = "/api/getInfo"
     return get(url,param)
 }
