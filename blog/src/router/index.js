@@ -14,62 +14,25 @@ const routes = [
                 component: () => import(/* webpackChunkName: "dash" */ '../views/dash/dash.vue'),
             },
             {
-                path: 'study',
-                component: () => import(/* webpackChunkName: "study" */ '../views/layout/blank.vue'),
-                children: [
-                    {
-                        path: 'college_english',
-                        component: () => import(/* webpackChunkName: "college_english" */ '../views/study/college_english.vue'),
-                    },
-                ]
+                path: 'study/college_english',
+                component: () => import(/* webpackChunkName: "study/college_english" */ '../views/study/college_english.vue'),
             },
             {
-                path: 'my_tool',
-                component: () => import(/* webpackChunkName: "study" */ '../views/layout/blank.vue'),
-                children: [
-                    {
-                        path: 'date_tool',
-                        component: () => import(/* webpackChunkName: "college_english" */ '../views/my_tool/date_tool.vue'),
-                    },
-                ]
+                path: 'my_tool/date_tool',
+                component: () => import(/* webpackChunkName: "my_tool/date_tool" */ '../views/my_tool/date_tool.vue'),
             },
             {
-                path: 'it',
-                component: () => import(/* webpackChunkName: "it" */ '../views/layout/blank.vue'),
-                children: [
-                    {
-                        path: 'first',
-                        component: () => import(/* webpackChunkName: "first" */ '../views/layout/blank.vue'),
-                        children: [
-                            {
-                                path: 'chengxuyuan',
-                                component: () => import(/* webpackChunkName: "chengxuyuan" */ '../views/it/first/chengxuyuan.vue'),
-                            }
-                        ]
-                    },
-                    {
-                        path: 'second',
-                        component: () => import(/* webpackChunkName: "second" */ '../views/layout/blank.vue'),
-                        children: [
-                            {
-                                path: 'ruanjianshejishi',
-                                component: () => import(/* webpackChunkName: "ruanjianshejishi" */ '../views/it/second/ruanjianshejishi.vue'),
-                            }
-                        ]
-                    },
-                    {
-                        path: 'third',
-                        component: () => import(/* webpackChunkName: "third" */ '../views/layout/blank.vue'),
-                        children: [
-                            {
-                                path: 'xitongjiagoushi',
-                                component: () => import(/* webpackChunkName: "xitongjiagoushi" */ '../views/it/third/xitongjiagoushi.vue'),
-                            }
-                        ]
-                    }
-                ]
+                path: 'it/first/chengxuyuan',
+                component: () => import(/* webpackChunkName: "it/first/chengxuyuan" */ '../views/it/first/chengxuyuan.vue'),
             },
-
+            {
+                path: 'it/second/ruanjianshejishi',
+                component: () => import(/* webpackChunkName: "it/second/ruanjianshejishi" */ '../views/it/second/ruanjianshejishi.vue'),
+            },
+            {
+                path: 'it/third/xitongjiagoushi',
+                component: () => import(/* webpackChunkName: "it/third/xitongjiagoushi" */ '../views/it/third/xitongjiagoushi.vue'),
+            },
         ]
     },
 ]

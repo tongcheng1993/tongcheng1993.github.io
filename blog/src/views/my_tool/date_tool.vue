@@ -1,7 +1,7 @@
 <template>
     <div style="margin: 20px">
         <div style="margin: 20px">
-            <a-input-number style="width: 100%" v-model:value="intValue" placeholder="请输入时间戳"/>
+            <a-input-number style="width: 100%" v-model:value="intValue"/>
             <div></div>
             <a-button @click="exchangeToDate">转换</a-button>
             <div></div>
