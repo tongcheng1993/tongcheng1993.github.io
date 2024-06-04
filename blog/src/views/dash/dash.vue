@@ -4,7 +4,7 @@
 </template>
 
 <script>
-    import {getInfo} from  "../../api/baseApi"
+
     import {Button as AButton,} from 'ant-design-vue'
 
     export default {
@@ -28,12 +28,7 @@
 
             // 初始化数据
             init() {
-                let _that = this
-                getInfo({}).then((data)=>{
-                    _that.count = 1
-                }).catch((error)=>{
-                    console.log(error)
-                })
+
             },
 
             increment() {

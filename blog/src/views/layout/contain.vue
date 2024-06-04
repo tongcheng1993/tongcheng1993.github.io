@@ -6,7 +6,7 @@
                     <div class="logo">/</div>
                 </router-link>
             </a-layout-header>
-            <a-layout>
+            <a-layout style="height: 560px;" >
                 <a-layout-side>
                     <a-menu>
                         <a-menu-item key="/dash">
@@ -71,11 +71,11 @@
                         </a-sub-menu>
                     </a-menu>
                 </a-layout-side>
-                <a-layout>
-                    <a-layout-content>
+
+                    <a-layout-content style="overflow: auto">
                         <router-view/>
                     </a-layout-content>
-                </a-layout>
+
             </a-layout>
             <a-layout-footer style="text-align: center" >Ant Design ©2018 Created by Ant UED</a-layout-footer>
         </a-layout>
