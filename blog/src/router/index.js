@@ -24,6 +24,16 @@ const routes = [
                 ]
             },
             {
+                path: 'my_tool',
+                component: () => import(/* webpackChunkName: "study" */ '../views/layout/blank.vue'),
+                children: [
+                    {
+                        path: 'date_tool',
+                        component: () => import(/* webpackChunkName: "college_english" */ '../views/my_tool/date_tool.vue'),
+                    },
+                ]
+            },
+            {
                 path: 'it',
                 component: () => import(/* webpackChunkName: "it" */ '../views/layout/blank.vue'),
                 children: [

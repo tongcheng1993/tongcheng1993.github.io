@@ -69,6 +69,18 @@
                                 </a-menu-item>
                             </a-sub-menu>
                         </a-sub-menu>
+                        <a-sub-menu>
+                            <template #icon>
+                                <cloud-outlined/>
+                            </template>
+                            <template #title>工具</template>
+                            <a-menu-item key="/my_tool/date_tool">
+                                <router-link to="/my_tool/date_tool">
+                                    <cloud-outlined/>
+                                    <span class="nav-text">时间工具</span>
+                                </router-link>
+                            </a-menu-item>
+                        </a-sub-menu>
                     </a-menu>
                 </a-layout-side>
 

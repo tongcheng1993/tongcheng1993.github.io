@@ -28,7 +28,8 @@
 
             // 初始化数据
             init() {
-
+                let _that = this
+                _that.count++
             },
 
             increment() {
