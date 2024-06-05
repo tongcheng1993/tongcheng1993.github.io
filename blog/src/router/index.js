@@ -1,34 +1,40 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
-
+import layoutContain from '../views/layout/contain.vue'
+import dashDash from '../views/dash/dash.vue'
+import studyCollege_english from '../views/study/college_english.vue'
+import my_toolDate_tool from '../views/my_tool/date_tool.vue'
+import itFirstChengxuyuan from '../views/it/first/chengxuyuan.vue'
+import itSecondRuanjianshejishi from '../views/it/second/ruanjianshejishi.vue'
+import itThirdXitongjiagoushi from '../views/it/third/xitongjiagoushi.vue'
 const routes = [
     {
         path: '/',
-        component: () => import('../views/layout/contain.vue'),
+        component: layoutContain,
 
         children: [
             {
                 path: "dash",
-                component: () => import('../views/dash/dash.vue'),
+                component: dashDash,
             },
             {
                 path: 'study/college_english',
-                component: () => import('../views/study/college_english.vue'),
+                component: studyCollege_english,
             },
             {
                 path: 'my_tool/date_tool',
-                component: () => import('../views/my_tool/date_tool.vue'),
+                component: my_toolDate_tool,
             },
             {
                 path: 'it/first/chengxuyuan',
-                component: () => import('../views/it/first/chengxuyuan.vue'),
+                component: itFirstChengxuyuan,
             },
             {
                 path: 'it/second/ruanjianshejishi',
-                component: () => import('../views/it/second/ruanjianshejishi.vue'),
+                component: itSecondRuanjianshejishi,
             },
             {
                 path: 'it/third/xitongjiagoushi',
-                component: () => import( '../views/it/third/xitongjiagoushi.vue'),
+                component: itThirdXitongjiagoushi,
             },
         ]
     },
