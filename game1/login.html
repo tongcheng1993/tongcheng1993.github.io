@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>Welcome to nginx!</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html">
+    <meta name="viewport" content="width=device-width,height=device-height" />
+    <style></style>
+</head>
+
+<body>
+    <div>
+        <button id="login">登录</button>
+    </div>
+    <script src="https://unpkg.com/vue@3.4.29/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/phaser@3.80.1/dist/phaser.min.js"></script>
+    <script src="/js/check_login.js"></script>
+    <script>
+        $("#login").click(function () {
+            window.sessionStorage.setItem("meToken", "meToken");
+            window.location.href = "/index.html"
+        })
+
+
+
+    </script>
+</body>
+
+</html>
