@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html lang="zh">
-
+<html lang="en">
 <head>
-    <title>Welcome to nginx!</title>
-    <meta charset="utf-8"/>
-    <meta http-equiv="Content-type" content="text/html">
-    <meta name="viewport" content="width=device-width,height=device-height" />
-    <style></style>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-
 <body>
-    <div id="app">
-        
-    </div>
-    <script src="https://unpkg.com/vue@3.4.29/dist/vue.global.prod.js"></script>
-    <script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
-    <script src="https://unpkg.com/phaser@3.80.1/dist/phaser.min.js"></script>
-    <script src="https://unpkg.com/axios@1.7.2/dist/axios.min.js"></script>
-    <script src="/js/check_login.js"></script>
-    <script>
 
-    </script>
+<div id="app">
+    <button type="button" @click="logout()">登出</button>
+</div>
+
+<script src="https://unpkg.com/vue@3.4.29/dist/vue.global.prod.js"></script>
+<script src="https://unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/phaser@3.80.1/dist/phaser.min.js"></script>
+<script src="https://unpkg.com/axios@1.7.2/dist/axios.min.js"></script>
+<script src="/js/check_login.js"></script>
+<script>
+    Vue.createApp({
+        data() {
+            return {
+                message: 'Hello Vue 3!'
+            };
+        },
+        methods: {
+            logout() {
+                alert(this.message)
+                window.sessionStorage.removeItem("meToken")
+                window.location.href = '/index.html'
+            }
+        }
+    }).mount('#app');
+</script>
 </body>
-
 </html>
