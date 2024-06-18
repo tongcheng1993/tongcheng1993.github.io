@@ -9,6 +9,8 @@
             }else{
                 window.location.href = toPage
             }
+        }else{
+            console.log(location_href)
         }
         
     } else {
