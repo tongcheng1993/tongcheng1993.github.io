@@ -3,11 +3,14 @@
     let toPage = window.sessionStorage.getItem("toPage");
     let location_href = window.location.href
     if (metoken) {
-        if(toPage === location_href ){
-            window.sessionStorage.removeItem("toPage")
-        }else{
-            window.location.href = toPage
+        if(toPage){
+            if(toPage === location_href ){
+                window.sessionStorage.removeItem("toPage")
+            }else{
+                window.location.href = toPage
+            }
         }
+        
     } else {
         if (location_href.includes("/login.html")) {
 
