@@ -19,10 +19,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/dashboard.vue'),
       },
       {
-        path: '/english',
-        name: 'english',
-        component: () => import(/* webpackChunkName: "english" */ '@/views/english/english.vue'),
+        path: '/blog',
+        name: 'blog',
+        component: () => import(/* webpackChunkName: "blog" */ '@/views/blog/blog.vue'),
       },
+
     ]
   },
   {

@@ -1,7 +1,7 @@
 <template>
   <div class="view_app">
     <el-row>
-      <el-col :span="4">
+      <el-col :span="4" class="logo">
         logo
       </el-col>
       <el-col :span="18">
@@ -11,22 +11,12 @@
             mode="horizontal"
             @select="handleSelect"
         >
-          <el-menu-item index="/dashboard">dashboard</el-menu-item>
-          <el-menu-item index="/english" >english</el-menu-item>
-<!--          <el-sub-menu index="2">-->
-<!--            <template #title>Workspace</template>-->
-<!--            <el-menu-item index="2-1">item one</el-menu-item>-->
-<!--            <el-menu-item index="2-2">item two</el-menu-item>-->
-<!--            <el-menu-item index="2-3">item three</el-menu-item>-->
-<!--            <el-sub-menu index="2-4">-->
-<!--              <template #title>item four</template>-->
-<!--              <el-menu-item index="2-4-1">item one</el-menu-item>-->
-<!--              <el-menu-item index="2-4-2">item two</el-menu-item>-->
-<!--              <el-menu-item index="2-4-3">item three</el-menu-item>-->
-<!--            </el-sub-menu>-->
-<!--          </el-sub-menu>-->
 
-<!--          <el-menu-item index="4">Orders</el-menu-item>-->
+
+          <el-menu-item v-for="(item,index) in menuList" :index="item.path" >
+            {{ item.title }}
+          </el-menu-item>
+
         </el-menu>
       </el-col>
       <el-col :span="2">
@@ -37,18 +27,18 @@
 </template>
 
 <script setup>
-import { onMounted,ref } from 'vue'
+import { onMounted,ref,defineProps,defineEmits } from 'vue'
 import { useRouter, useRoute, onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
-defineProps({
-  title: String,
-  likes: Number
-})
+
+
+const props = defineProps({
+  menuList: Array
+});
+const emit = defineEmits(['updateParentData']);
 const router = useRouter()
 const route = useRoute()
 const activeIndex = ref("1")
-const addClick = () => {
-  activeIndex.value+= 2
-}
+
 const handleSelect = (key, keyPath)=>{
   console.log(key, keyPath)
 // 路由跳转 && 设置参数
@@ -64,10 +54,20 @@ onMounted(()=>{
   console.log(path)
   activeIndex.value= path
 })
+
+
+function sendToParent() {
+  emit('updateParentData', '子组件数据');
+}
 </script>
 
 
 
 <style scoped>
-
+.logo {
+  background-image: url("@/assets/logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
 </style>

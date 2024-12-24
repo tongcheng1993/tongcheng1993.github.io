@@ -2,12 +2,14 @@
   <div class="view_app">
     <el-container>
       <el-header>
-        <m-header></m-header>
+        <m-header :menu-list="menuList" @updateParentData="handleDataFromChild"></m-header>
       </el-header>
       <el-main>
         <router-view/>
       </el-main>
-      <el-footer>Footer</el-footer>
+      <el-footer>
+        Footer
+      </el-footer>
     </el-container>
 
   </div>
@@ -16,11 +18,30 @@
 <script setup>
 
 import MHeader from '@/views/layout/component/mHeader.vue'
-import {ref} from 'vue'
+import {ref,onMounted} from 'vue'
 
 const name = ref('contain')
+const menuList = ref([]);
+const childData =  ref("");
+
+onMounted(()=>{
 
 
+  menuList.value= [
+    {
+      path:"/dashboard",
+      title:"首页"
+    },
+    {
+      path:"/blog",
+      title:"博客"
+    },
+  ]
+})
+
+function handleDataFromChild(data) {
+  childData.value = data;
+}
 </script>
 
 
