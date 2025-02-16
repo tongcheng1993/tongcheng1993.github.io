@@ -17,7 +17,7 @@
 
 <script setup>
 
-import MHeader from '@/views/layout/component/mHeader.vue'
+import MHeader from '@/index/views/layout/component/mHeader.vue'
 import {ref,onMounted} from 'vue'
 
 const name = ref('contain')

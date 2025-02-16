@@ -5,23 +5,23 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '@/views/login/login.vue')
+    component: () => import(/* webpackChunkName: "login" */ '@/index/views/login/login.vue')
   },
   {
     path: '/',
     name: 'contain',
     redirect: '/dashboard',
-    component: () => import(/* webpackChunkName: "contain" */ '@/views/layout/contain.vue'),
+    component: () => import(/* webpackChunkName: "contain" */ '@/index/views/layout/contain.vue'),
     children:[
       {
         path: '/dashboard',
         name: 'dashboard',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/dashboard.vue'),
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/index/views/dashboard/dashboard.vue'),
       },
       {
         path: '/blog',
         name: 'blog',
-        component: () => import(/* webpackChunkName: "blog" */ '@/views/blog/blog.vue'),
+        component: () => import(/* webpackChunkName: "blog" */ '@/index/views/blog/blog.vue'),
       },
 
     ]
@@ -32,7 +32,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "lost404" */ '@/views/err/lost404.vue')
+    component: () => import(/* webpackChunkName: "lost404" */ '@/index/views/err/lost404.vue')
   }
 ]
 

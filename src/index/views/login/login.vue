@@ -12,7 +12,7 @@ const name = ref('login')
 
 <style scoped>
 .login {
-  background-image: url("@/assets/logo.png");
+  background-image: url("@/index/assets/logo.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

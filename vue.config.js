@@ -6,7 +6,7 @@ module.exports = defineConfig({
     pages: {
         index: {
             // page 的入口
-            entry: 'src/main.js',
+            entry: 'src/index/main.js',
             // 模板来源
             template: 'public/index.html',
             // 在 dist/index.html 的输出
@@ -19,7 +19,7 @@ module.exports = defineConfig({
             chunks: ['chunk-vendors', 'chunk-common', 'index']
         },
         // 可以添加更多页面入口
-        subpage: {
+        page1: {
             entry: 'src/page1/main.js',
             template: 'public/page1.html',
             filename: 'page1.html',
