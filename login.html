@@ -1,8 +1,95 @@
 <!DOCTYPE html>
-<html>
-<head></head>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/my.css">
+    <style type="text/css">
+    </style>
+
+</head>
+
 <body>
-    
+    <div v-cloak id="app">
+        <el-form :model="login" :rules="rules" ref="loginForm" @submit.native.prevent="handleSubmit">
+            <!-- 用户名输入 -->
+            <el-form-item prop="username">
+                <el-input v-model="login.username" type="text" id="username" name="username" placeholder="请输入用户名"
+                    clearable>
+                    <template #prefix> <i class="el-icon-user"></i> </template>
+                </el-input>
+            </el-form-item>
+            <!-- 密码输入 -->
+            <el-form-item prop="password">
+                <el-input v-model="login.password" type="password" id="password" name="password" placeholder="请输入密码"
+                    show-password>
+                    <template #prefix> <i class="el-icon-lock"></i> </template>
+                </el-input>
+            </el-form-item>
+            <!-- 提交按钮 -->
+            <el-form-item>
+                <el-button type="primary" native-type="submit" :loading="loading">登录 </el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+    <script charset="utf-8" type="text/javascript" src="/js/vue.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="/js/index.js"></script>
+    <script charset="utf-8" type="text/javascript" src="/js/axios.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="/js/my.js"></script>
+    <script type="text/javascript">
+        Vue.use(ELEMENT);
+        var vm = new Vue({
+            data: {
+                login: {
+                    username: '',
+                    password: ''
+                },
+                loading: false,
+                rules: {
+                    username: [
+                        { required: true, message: '请输入用户名', trigger: 'blur' },
+                        { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
+                    ],
+                    password: [
+                        { required: true, message: '请输入密码', trigger: 'blur' },
+                        { min: 6, max: 20, message: '长度在 6 到 20 个字符', trigger: 'blur' }
+                    ]
+                }
+            },
+            methods: {
+                handleSubmit() {
+                    // 添加周六标识头（可选）
+                    const headers = new Date().getDay() === 6 ?
+                        { "X-Weekend": "true" } : {};
+                    this.$refs.loginForm.validate(valid => {
+                        if (valid) {
+                            this.loading = true
+                            window.postWithToken("/api/business/login", this.login,headers).then(res => {
+                                if (res.token) {
+                                    sessionStorage.setItem("p1", JSON.stringify({ token: res.token }));
+                                    this.$message.success(" 登录成功");
+                                    window.location.href = "/dashboard";
+                                }
+                            }).catch(err => {
+                                this.$message.error(err.response?.data?.message || "网络异常");
+                            }).finally(() => {
+                                this.loading = false;
+                            });
+                        }
+                    })
+                }
+            },
+            watch: {
+
+            },
+            created: function () {
+
+            }
+        }).$mount('#app')
+    </script>
 </body>
 
 </html>
