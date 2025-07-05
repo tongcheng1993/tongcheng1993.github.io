@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <title>登录</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/my.css">
-    <style type="text/css">
-    </style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="keywords" content="学习">
+	<meta name="description" content="学习">
+	<link rel="icon" href="/favicon.ico">
+	<title>登录</title>
+	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css">
+	<link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+	<link rel="stylesheet" href="/css/my.css?v=1">
+	<style type="text/css">
+
+	</style>
+	<script src="https://unpkg.com/vue@2.7.16/dist/vue.min.js"></script>
+	<script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+	<script src="https://unpkg.com/axios@0.21.4/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+	<script src="https://unpkg.com/stompjs@2.3.3/lib/stomp.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="/js/my.js?v=1"></script>
 
 </head>
 
@@ -16,15 +28,15 @@
     <div v-cloak id="app">
         <el-form :model="login" :rules="rules" ref="loginForm" @submit.native.prevent="handleSubmit">
             <!-- 用户名输入 -->
-            <el-form-item prop="username">
-                <el-input v-model="login.username" type="text" id="username" name="username" placeholder="请输入用户名"
+            <el-form-item prop="userName">
+                <el-input v-model="login.userName" type="text" id="userName" name="userName" placeholder="请输入用户名"
                     clearable>
                     <template #prefix> <i class="el-icon-user"></i> </template>
                 </el-input>
             </el-form-item>
             <!-- 密码输入 -->
-            <el-form-item prop="password">
-                <el-input v-model="login.password" type="password" id="password" name="password" placeholder="请输入密码"
+            <el-form-item prop="passWord">
+                <el-input v-model="login.passWord" type="password" id="passWord" name="passWord" placeholder="请输入密码"
                     show-password>
                     <template #prefix> <i class="el-icon-lock"></i> </template>
                 </el-input>
@@ -44,17 +56,15 @@
             </el-form-item>
         </el-form>
     </div>
-    <script charset="utf-8" type="text/javascript" src="/js/vue.min.js"></script>
-    <script charset="utf-8" type="text/javascript" src="/js/index.js"></script>
-    <script charset="utf-8" type="text/javascript" src="/js/axios.min.js"></script>
-    <script charset="utf-8" type="text/javascript" src="/js/my.js"></script>
     <script type="text/javascript">
         Vue.use(ELEMENT);
         var vm = new Vue({
             data: {
                 login: {
-                    username: '',
-                    password: ''
+                    userName: '',
+                    passWord: '',
+                    redisUuid:'',
+                    redisValue:''
                 },
                 loading: false,
                 captchaImgLoad: false,
@@ -79,7 +89,7 @@
                             redisUuid: res.redisUuid,
                             imgBase64: res.imgBase64,
                         }
-                        this.loginForm.redisUuid = temp.redisUuid;
+                        this.login.redisUuid = temp.redisUuid;
                         this.captchaImg = temp.imgBase64
                         this.captchaImgLoad = false;
                     }).catch((err) => {
@@ -91,9 +101,14 @@
                     this.$refs.loginForm.validate(valid => {
                         if (valid) {
                             this.loading = true
-                            window.postWithToken("/api/business/login", this.login).then(res => {
-                                if (res.token) {
-                                    sessionStorage.setItem("p1", JSON.stringify({ token: res.token }));
+                            window.postWithToken("/api/business/webUser/login", this.login).then(res => {
+                                if (res) {
+                                    let p ={ 
+                                        userName:this.login.userName,
+                                        token : res ,
+                                        passWord:this.login.passWord
+                                    }
+                                    sessionStorage.setItem("p1", JSON.stringify(p));
                                     this.$message.success(" 登录成功");
                                     window.location.href = "/index.html";
                                 }
