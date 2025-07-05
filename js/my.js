@@ -33,16 +33,43 @@ function postWithToken(path, data, extraHeaders = {}) {
             return response.data.result;
         })
         .catch(error => {
-            // 5. 错误处理（细分网络错误、服务端错误等）
-            if (error.response) {
-                console.error(" 服务端错误:", error.response.status);
-            } else if (error.request) {
-                console.error(" 网络错误:", error.message);
-            } else {
-                console.error(" 请求配置错误:", error.message);
-            }
             throw error; // 继续向上抛出错误 
         });
+}
+
+
+
+function toPage(name, param) {
+    // 构建参数部分的 URL 字符串 
+    let paramString = '';
+    if (param) {
+        const paramsArray = [];
+        for (const key in param) {
+            if (param.hasOwnProperty(key)) {
+                paramsArray.push(encodeURIComponent(key) + '=' + encodeURIComponent(param[key]));
+            }
+        }
+        paramString = '?' + paramsArray.join('&');
+    }
+    let url = ''
+    if (name) {
+        if (name == 'serverselect') {
+            url = "/index.html"
+        } else if (name == 'userselect') {
+            url = "/page/page0.html"
+        } else if (name == 'home') {
+            url = "/page/page1.html"
+        } else if (name == 'city1') {
+            url = "/page/page2.html"
+        } else {
+            url = "/login.html"
+        }
+    } else {
+        url = "/login.html"
+    }
+
+    // 进行页面跳转 
+    window.location.href = url + paramString;;
 }
 
 
@@ -50,11 +77,7 @@ function postWithToken(path, data, extraHeaders = {}) {
 
 
 
-
-
-
-
-// 全局定义方法a（可通过window.checkOnline调用）
+// 全局定义方法（可通过window.checkOnline调用）
 function checkOnline() {
     let url = window.location.href
     let urlObj = new URL(url)
@@ -63,7 +86,7 @@ function checkOnline() {
         sessionStorage.setItem("p1", "")
     } else {
         if (sessionStorage.getItem("p1")) {
-            postWithToken("/api/sys/getInfo", {})
+            
 
 
 

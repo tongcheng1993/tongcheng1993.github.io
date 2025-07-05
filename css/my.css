@@ -3,16 +3,22 @@ html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, table, td, th, img, div, dl, 
     padding: 0;
     border: none;
 }
+html {
+    height: 100%;
+    width: 100%;
+}
 
 body {
     background-color: rgb(233, 250, 255);
     color: rgb(85, 85, 85);
-    font-family: ËÎÌו, serif;
+    font-family: serif;
     font-size: 12px;
     margin: 0 auto;
     overflow: auto;
+    height: 100%;
+    width: 100%;
 }
 
 [v-cloak] {
-	display: none;
+    display: none;
 }

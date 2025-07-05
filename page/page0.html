@@ -19,36 +19,69 @@
     <script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
     <script src="https://unpkg.com/axios@0.21.4/dist/axios.min.js"></script>
     <script src="https://unpkg.com/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
-	<script src="https://unpkg.com/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="https://unpkg.com/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="https://unpkg.com/phaser@3.90.0/dist/phaser.min.js"></script>
     <script charset="utf-8" type="text/javascript" src="/js/my.js?v=1"></script>
 </head>
 
 <body>
     <div v-cloak id="app">
         <ul>
-            <li v-for=""></li>
+            <li v-for="(item,index) in list" @click="handleClick(item)">
+                姓名 {{item.name}} 性别 {{item.sex}}
+            </li>
         </ul>
-        <el-button type="primary" @click="activeButton">{{message}}</el-button>
+        <el-button type="primary" @click="activeButton">选择</el-button>
         <a href="/login.html">登出</a>
     </div>
     <script type="text/javascript">
         Vue.use(ELEMENT);
         var vm = new Vue({
             data: {
-                message: "submit",
-                list: [{
+                serverCode: "",
+                list: [],
+                one: {
 
-                }]
+                }
             },
             methods: {
+                handleClick: function (item) {
+                    this.$message.success("选择了"+item.name)
+                    this.one = item
+                },
                 activeButton: function () {
-                    this.$message.success("123想不");
-                    this.$message.success("123想不");
-                    this.$message.success("123想不");
-                    this.$message.error("123想不");
+                    window.toPage('home');
                 }
             },
             watch: {
+                one: {
+                    handler: function (newVal, oldVal) {
+                        console.log('one  发生了变化');
+                        // 处理变化逻辑 
+                        sessionStorage.setItem("userInfo", JSON.stringify(newVal))
+                    },
+                    deep: true
+                }
+            },
+            mounted: function () {
+                // 创建 URLSearchParams 对象 
+                const searchParams = new URLSearchParams(window.location.search);
+                // 获取指定参数的值 
+                this.serverCode = searchParams.get('serverCode');
+                this.list = [
+                    {
+                        cid: "1",
+                        name: "张三",
+                        sex: "男"
+                    },
+                    {
+                        cid: "2",
+                        name: "李四",
+                        sex: "男"
+                    }
+                ]
+
+
 
             },
             created: function () {
