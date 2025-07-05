@@ -1,53 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head>
-<meta charset="UTF-8">
-<title>index</title>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/css/my.css">
-<style type="text/css">
+<html lang="zh-CN">
 
-</style>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="keywords" content="学习">
+	<meta name="description" content="学习">
+	<link rel="icon" href="/favicon.ico">
+	<title>index</title>
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css">
+	<link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+	<link rel="stylesheet" href="/css/myCss.css?v=1">
+	<style type="text/css">
+
+	</style>
+	<script src="https://unpkg.com/vue@2.7.16/dist/vue.min.js"></script>
+	<script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+	<script src="https://unpkg.com/axios@0.21.4/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+	<script src="https://unpkg.com/stompjs@2.3.3/lib/stomp.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="/js/my.js?v=1"></script>
 
 </head>
+
 <body>
 	<div v-cloak id="app">
 		<ul>
 			<li v-for=""></li>
 		</ul>
 		<el-button type="primary" @click="activeButton">{{message}}</el-button>
-		<a href="/logout">登出</a>
+		<a href="/login.html">登出</a>
 	</div>
-	<script charset="utf-8" type="text/javascript" src="/js/vue.min.js"></script>
-	<script charset="utf-8" type="text/javascript" src="/js/index.js"></script>
-	<script charset="utf-8" type="text/javascript" src="/js/axios.min.js"></script>
-	<script charset="utf-8" type="text/javascript" src="/js/my.js"></script>
+
+
 	<script type="text/javascript">
 		Vue.use(ELEMENT);
 		var vm = new Vue({
-			data : {
-				message : "submit",
-				list:[{
-					
+			data: {
+				message: "submit",
+				list: [{
+
 				}]
 			},
-			methods : {
-				activeButton : function() {
+			methods: {
+				activeButton: function () {
 					this.$message.success("123想不");
 					this.$message.success("123想不");
 					this.$message.success("123想不");
 					this.$message.error("123想不");
 				}
 			},
-			watch : {
+			watch: {
 
 			},
-			created : function() {
+			created: function () {
 
 			}
 		}).$mount('#app')
 	</script>
 </body>
+
 </html>
