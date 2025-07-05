@@ -29,6 +29,15 @@
                     <template #prefix> <i class="el-icon-lock"></i> </template>
                 </el-input>
             </el-form-item>
+            </el-form-item>
+            <el-form-item label="验证码：">
+                <el-input v-model="login.redisValue" placeholder="请输入验证码" prefix-icon="el-icon-picture"></el-input>
+            </el-form-item>
+            <el-form-item label="验证码：">
+                <div v-loading="captchaImgLoad">
+                    <img :src="captchaImg" alt="加载验证码失败" width="100%" @click="getCaptchaImg" />
+                </div>
+            </el-form-item>
             <!-- 提交按钮 -->
             <el-form-item>
                 <el-button type="primary" native-type="submit" :loading="loading">登录 </el-button>
@@ -48,6 +57,8 @@
                     password: ''
                 },
                 loading: false,
+                captchaImgLoad: false,
+                captchaImg: "",
                 rules: {
                     username: [
                         { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -60,14 +71,27 @@
                 }
             },
             methods: {
+                getCaptchaImg() {
+                    this.captchaImgLoad = true;
+                    let parameter = {}
+                    window.postWithToken("/api/business/webUser/drawCaptcha", parameter).then((res) => {
+                        let temp = {
+                            redisUuid: res.redisUuid,
+                            imgBase64: res.imgBase64,
+                        }
+                        this.loginForm.redisUuid = temp.redisUuid;
+                        this.captchaImg = temp.imgBase64
+                        this.captchaImgLoad = false;
+                    }).catch((err) => {
+
+                    })
+                },
+
                 handleSubmit() {
-                    // 添加周六标识头（可选）
-                    const headers = new Date().getDay() === 6 ?
-                        { "X-Weekend": "true" } : {};
                     this.$refs.loginForm.validate(valid => {
                         if (valid) {
                             this.loading = true
-                            window.postWithToken("/api/business/login", this.login,headers).then(res => {
+                            window.postWithToken("/api/business/login", this.login).then(res => {
                                 if (res.token) {
                                     sessionStorage.setItem("p1", JSON.stringify({ token: res.token }));
                                     this.$message.success(" 登录成功");
@@ -83,6 +107,9 @@
                 }
             },
             watch: {
+
+            },
+            mounted: function () {
 
             },
             created: function () {
