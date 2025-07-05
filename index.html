@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/my.css">
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+	<div v-cloak id="app">
+		<ul>
+			<li v-for=""></li>
+		</ul>
+		<el-button type="primary" @click="activeButton">{{message}}</el-button>
+		<a href="/logout">登出</a>
+	</div>
+	<script charset="utf-8" type="text/javascript" src="/js/vue.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="/js/index.js"></script>
+	<script charset="utf-8" type="text/javascript" src="/js/axios.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="/js/my.js"></script>
+	<script type="text/javascript">
+		Vue.use(ELEMENT);
+		var vm = new Vue({
+			data : {
+				message : "submit",
+				list:[{
+					
+				}]
+			},
+			methods : {
+				activeButton : function() {
+					this.$message.success("123想不");
+					this.$message.success("123想不");
+					this.$message.success("123想不");
+					this.$message.error("123想不");
+				}
+			},
+			watch : {
+
+			},
+			created : function() {
+
+			}
+		}).$mount('#app')
+	</script>
+</body>
+</html>
