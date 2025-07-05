@@ -26,11 +26,14 @@
 
 <body>
 	<div v-cloak id="app">
+		<p>选择服务器</p><a href="/login.html">登出</a>
 		<ul>
-			<li v-for=""></li>
+			<li v-for="(item,index) in list" @click="handleClick(item)">
+				{{item.name}}
+			</li>
 		</ul>
-		<el-button type="primary" @click="activeButton">{{message}}</el-button>
-		<a href="/login.html">登出</a>
+		<el-button type="primary" @click="activeButton" :loading="loading">确认</el-button>
+
 	</div>
 
 
@@ -38,17 +41,46 @@
 		Vue.use(ELEMENT);
 		var vm = new Vue({
 			data: {
-				message: "submit",
-				list: [{
-
-				}]
+				selectCode: "",
+				loading: false,
+				list: [
+					{
+						code: "1",
+						name: "1服务器"
+					},
+					{
+						code: "2",
+						name: "1服务器"
+					},
+					{
+						code: "3",
+						name: "1服务器"
+					},
+				]
 			},
 			methods: {
+				handleClick: function (scope) {
+					this.$message.success("选择了" + scope.name);
+					this.selectCode = scope.code
+				},
 				activeButton: function () {
-					this.$message.success("123想不");
-					this.$message.success("123想不");
-					this.$message.success("123想不");
-					this.$message.error("123想不");
+					this.loading = true
+					if (this.selectCode) {
+						window.postWithToken("/api/business/webUser/drawCaptcha", this.selectCode).then(res => {
+							if (res) {
+								this.$message.success("进入角色选择页面");
+								window.location.href = "/page/page0.html";
+							}
+						}).catch(err => {
+							this.$message.error(err.response?.data?.message || "网络异常");
+						}).finally(() => {
+							this.loading = false;
+						});
+					} else {
+						this.$message.error("请选择服务器");
+						this.loading = false;
+					}
+
 				}
 			},
 			watch: {
