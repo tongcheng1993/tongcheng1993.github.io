@@ -22,3 +22,13 @@ body {
 [v-cloak] {
     display: none;
 }
+
+/* 强制横屏布局 */
+@media screen and (orientation: landscape) {
+    body {
+        transform: rotate(0deg);
+        width: 100vh;
+        height: 100vw;
+        overflow: hidden;
+    }
+}
