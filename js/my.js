@@ -86,7 +86,17 @@ function checkOnline() {
         sessionStorage.setItem("p1", "")
     } else {
         if (sessionStorage.getItem("p1")) {
-            
+            document.addEventListener('DOMContentLoaded', () => {
+                const body = document.querySelector('body');
+                if (body) {
+                    body.classList.add('force-landscape');
+                } else {
+                    console.warn('DOM 未就绪，启用备用方案');
+                    requestAnimationFrame(() => {
+                        document.body?.classList.add('force-landscape');
+                    });
+                }
+            });
 
 
 
@@ -102,5 +112,8 @@ function checkOnline() {
 }
 
 (function () {
+
+
+
     checkOnline();
 })()

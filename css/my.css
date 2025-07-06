@@ -23,12 +23,19 @@ body {
     display: none;
 }
 
-/* 强制横屏布局 */
-@media screen and (orientation: landscape) {
-    body {
-        transform: rotate(0deg);
-        width: 100vh;
-        height: 100vw;
-        overflow: hidden;
+
+
+.force-landscape {
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: top left;
+    width: 100vh;
+    height: var(--viewport-height, 100vw);
+    position: fixed;
+    /* top: 100%; */
+    left: 0;
+    overflow-x: hidden;
+    /* 适配Galaxy Z Fold6等折叠屏 */ 
+    @media (screen-spanning: single-fold-vertical) {
+      height: calc(var(--viewport-height) - env(fold-top));
     }
-}
+  }
