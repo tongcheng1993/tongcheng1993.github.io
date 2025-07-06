@@ -6,19 +6,77 @@ var cursors;
 var score = 0;
 var gameOver = false;
 var scoreText;
+
+let startX = null;
+let startY = null;
+let isSwiping = false;
+let swipeDirection = ''; // 'left', 'right', 'up', 'down'
+ 
 // 根据需要调整判断条件以确定左右移动的阈值或区域
-function pointerDown(pointer) {
-    if (pointer.x < 400) { 
-        this.player.setVelocityX(-160); // 向左移动
-    } else {
-        this.player.setVelocityX(160); // 向右移动
+function onPointerDown(pointer) {
+    let x = 200
+    let y = 100
+    startX = pointer.x;
+    startY = pointer.y;
+    isSwiping = true;
+    if(isSwiping){
+        let dx = startX-x
+        let dy = startY-y
+        let absDx = Math.abs(dx);
+        let absDy = Math.abs(dy);
+        if (absDx > absDy) { // horizontal movement dominates
+            if (dx > 0) {
+                swipeDirection = 'right'; // Right swipe
+                player.setVelocityX(160);
+            } else {
+                swipeDirection = 'left'; // Left swipe
+                player.setVelocityX(-160);
+            }
+        } else if (absDy > absDx) { // vertical movement dominates, but we can still check for up/down if needed
+            if (dy > 0) {
+                swipeDirection = 'down'; // Down swipe, not used in this example but can be included if needed.
+            } else {
+                swipeDirection = 'up'; // Up swipe, not used in this example but can be included if needed.
+            }
+        } else { // diagonal movement, treat as a tap or adjust logic as needed.
+            swipeDirection = ''; // Treat as no swipe or adjust as needed.
+        }
+    }
+
+
+
+}
+function onPointerUp() {
+    isSwiping = false;
+}
+function onPointerMove(pointer) {
+    if (isSwiping) {
+        let dx = pointer.x - startX;
+        let dy = pointer.y - startY;
+        let absDx = Math.abs(dx);
+        let absDy = Math.abs(dy);
+        if (absDx > absDy) { // horizontal movement dominates
+            if (dx > 0) {
+                swipeDirection = 'right'; // Right swipe
+                player.setVelocityX(160);
+            } else {
+                swipeDirection = 'left'; // Left swipe
+                player.setVelocityX(-160);
+            }
+        } else if (absDy > absDx) { // vertical movement dominates, but we can still check for up/down if needed
+            if (dy > 0) {
+                swipeDirection = 'down'; // Down swipe, not used in this example but can be included if needed.
+                player.setVelocityY(330);
+            } else {
+                swipeDirection = 'up'; // Up swipe, not used in this example but can be included if needed.
+                player.setVelocityY(-330);
+            }
+        } else { // diagonal movement, treat as a tap or adjust logic as needed.
+            swipeDirection = ''; // Treat as no swipe or adjust as needed.
+        }
+        console.log('Swipe direction:', swipeDirection); // Log or use the direction as needed.
     }
 }
-// 停止移动
-function pointerUp() {
-    this.player.setVelocityX(0); 
-}
-
 function collectStar(player, star) {
     star.disableBody(true, true);
 
@@ -67,6 +125,9 @@ function preload() {
 
 
 function create() {
+    this.input.on('pointerdown', onPointerDown, this);
+    this.input.on('pointerup', onPointerUp, this);
+    this.input.on('pointermove', onPointerMove, this);
     //  A simple background for our game
     this.add.image(400, 300, 'sky');
 
