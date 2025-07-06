@@ -51,30 +51,7 @@
                     this.one = item
                 },
                 activeButton: function () {
-                    if (screenfull.isEnabled)  {
-  // 添加async/await确保时序 
-  screenfull.toggle() 
-    .then(async () => {
-      if (screenfull.isFullscreen)  {
-        console.warn('1'); 
-        try {
-          // 现代浏览器要求全屏完成后再锁定方向
-          await new Promise(resolve => setTimeout(resolve, 300)); // 允许过渡动画完成
-          await screen.orientation?.lock?.('landscape'); 
-        } catch (e) {
-          console.warn(' 横屏锁定失败，启用CSS补偿', e);
-          // 2025年CSS补偿方案（兼容折叠屏）
-          document.body.classList.add('force-landscape'); 
-          document.documentElement.style.setProperty('--viewport-height',  window.innerHeight  + 'px');
-        }
-      }
-    })
-    .catch(err => {
-      console.error(' 全屏切换失败:', err);
-    });
-}
-
-                    // window.toPage('home');
+                    window.toPage('home');
                 }
             },
             watch: {
