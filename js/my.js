@@ -1,5 +1,5 @@
 function postWithToken(path, data, extraHeaders = {}) {
-    let url = "https://tongcheng.picp.vip:20443" + path;
+    let url = "https://tongcheng.picp.vip:443" + path;
 
     // 1. 从 sessionStorage 获取 Token（兼容性处理）
     let token = "";
