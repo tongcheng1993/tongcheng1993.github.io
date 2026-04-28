@@ -3,6 +3,7 @@ html, body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, table, td, th, img, div, dl, 
     padding: 0;
     border: none;
 }
+
 html {
     height: 100%;
     width: 100%;
@@ -25,17 +26,3 @@ body {
 
 
 
-.force-landscape {
-    transform: rotate(90deg) translateY(-100%);
-    transform-origin: top left;
-    width: 100vh;
-    height: var(--viewport-height, 100vw);
-    position: fixed;
-    /* top: 100%; */
-    left: 0;
-    overflow-x: hidden;
-    /* 适配Galaxy Z Fold6等折叠屏 */ 
-    @media (screen-spanning: single-fold-vertical) {
-      height: calc(var(--viewport-height) - env(fold-top));
-    }
-  }

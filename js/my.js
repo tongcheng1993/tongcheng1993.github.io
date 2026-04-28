@@ -1,11 +1,13 @@
 function postWithToken(path, data, extraHeaders = {}) {
-    let url = "https://tongcheng.picp.vip:443" + path;
+    let url = "https://tongcheng.123nat.com:20443" + path;
 
     // 1. 从 sessionStorage 获取 Token（兼容性处理）
     let token = "";
     try {
         const p1 = sessionStorage.getItem("p1");
-        if (p1) token = JSON.parse(p1).token;
+        if (p1) {
+            token = JSON.parse(p1).token;
+        }
     } catch (e) {
         console.error("Token  解析失败:", e);
     }
@@ -39,7 +41,7 @@ function postWithToken(path, data, extraHeaders = {}) {
 
 
 
-function toPage(name, param) {
+function toPage(uri, param) {
     // 构建参数部分的 URL 字符串 
     let paramString = '';
     if (param) {
@@ -51,25 +53,9 @@ function toPage(name, param) {
         }
         paramString = '?' + paramsArray.join('&');
     }
-    let url = ''
-    if (name) {
-        if (name == 'serverselect') {
-            url = "/index.html"
-        } else if (name == 'userselect') {
-            url = "/page/page0.html"
-        } else if (name == 'home') {
-            url = "/page/page1.html"
-        } else if (name == 'city1') {
-            url = "/page/page2.html"
-        } else {
-            url = "/login.html"
-        }
-    } else {
-        url = "/login.html"
-    }
-
+    let url = uri+paramString;
     // 进行页面跳转 
-    window.location.href = url + paramString;;
+    window.location.href = url;
 }
 
 
@@ -86,29 +72,12 @@ function checkOnline() {
         sessionStorage.setItem("p1", "")
     } else {
         if (sessionStorage.getItem("p1")) {
-            document.addEventListener('DOMContentLoaded', () => {
-                const body = document.querySelector('body');
-                if (body) {
-                    body.classList.add('force-landscape');
-                } else {
-                    console.warn('DOM 未就绪，启用备用方案');
-                    requestAnimationFrame(() => {
-                        document.body?.classList.add('force-landscape');
-                    });
-                }
-            });
 
-
-
-
-
+            
         } else {
             window.location.href = "/login.html"
         }
     }
-
-
-    // 其他逻辑...
 }
 
 (function () {
