@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta name="keywords" content="学习">
+	<meta name="description" content="学习">
+	<title>index</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css">
+	<link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+	<script src="https://unpkg.com/vue@2.7.16/dist/vue.min.js"></script>
+	<script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
+	<script src="https://unpkg.com/axios@0.21.4/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/screenfull@5.2.0/dist/screenfull.js"></script>
+	<script src="https://unpkg.com/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+	<script src="https://unpkg.com/stompjs@2.3.3/lib/stomp.min.js"></script>
+	<script src="https://unpkg.com/phaser@3.90.0/dist/phaser.min.js"></script>
+	<style>
+		[v-cloak] {
+			display: none !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div v-cloak id="app">
+		<ul>
+			<li v-for="(item,index) in list" @click="handleClick(item)">
+				{{item.name}}
+			</li>
+		</ul>
+		<el-button type="primary" @click="activeButton" :loading="loading">确认</el-button>
+		<a href="/data/test/app-debug.apk">测试apk</a>
+	</div>
+
+
+	<script type="text/javascript">
+		Vue.use(ELEMENT);
+		var vm = new Vue({
+			data: {
+				selectCode: "",
+				loading: false,
+				list: [
+					{
+						code: "1",
+						name: "1服务器"
+					},
+					{
+						code: "2",
+						name: "1服务器"
+					},
+					{
+						code: "3",
+						name: "1服务器"
+					},
+				]
+			},
+			methods: {
+				handleClick: function (scope) {
+					this.$message.success("选择了" + scope.name);
+					this.selectCode = scope.code
+				},
+				activeButton: function () {
+					this.loading = true
+					if (this.selectCode) {
+						window.toPage('userselect', { serverCode: this.selectCode });
+					} else {
+						this.$message.error("请选择服务器");
+						this.loading = false;
+					}
+
+				}
+			},
+			watch: {
+
+			},
+			created: function () {
+
+			}
+		}).$mount('#app')
+	</script>
+</body>
+
+</html>
