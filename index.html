@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: #f5f7fb;
@@ -21,6 +23,7 @@
             align-items: center;
             min-height: 100vh;
         }
+
         .app-container {
             max-width: 600px;
             width: 100%;
@@ -29,6 +32,7 @@
             padding: 1.8rem;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
         }
+
         h3 {
             font-size: 1.6rem;
             font-weight: 600;
@@ -37,12 +41,14 @@
             border-left: 4px solid #3b82f6;
             padding-left: 1rem;
         }
+
         .sub {
             color: #5b6e8c;
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
             padding-left: 1rem;
         }
+
         ul {
             list-style: none;
             margin: 1.5rem 0;
@@ -50,17 +56,20 @@
             flex-direction: column;
             gap: 0.75rem;
         }
+
         li {
             background: #f8fafc;
             border-radius: 16px;
             transition: all 0.2s ease;
             border: 1px solid #e2e8f0;
         }
+
         li:hover {
             background: #f1f5f9;
             border-color: #cbd5e1;
             transform: translateY(-1px);
         }
+
         a {
             display: block;
             padding: 0.9rem 1.2rem;
@@ -71,11 +80,13 @@
             transition: 0.2s;
             border-radius: 16px;
         }
+
         a:hover {
             color: #1d4ed8;
             background: #ffffff;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
         }
+
         .path-hint {
             font-size: 0.75rem;
             color: #5b6e8c;
@@ -86,11 +97,13 @@
             padding: 2px 8px;
             border-radius: 20px;
         }
+
         /* 为每个链接里的文件路径做点缀 */
         .version-name {
             font-weight: 600;
             margin-right: 12px;
         }
+
         .footer-note {
             margin-top: 1.8rem;
             padding-top: 1rem;
@@ -99,16 +112,19 @@
             color: #6c7a91;
             text-align: center;
         }
+
         @media (max-width: 480px) {
             .app-container {
                 padding: 1.2rem;
             }
+
             a {
                 padding: 0.7rem 1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div id="app">
         <div class="app-container">
@@ -134,14 +150,15 @@
             data() {
                 return {
                     list: [
-                        { version: 1, name: '1', path: '/1/app.apk' },
-                        { version: 2, name: '2', path: '/2/app.apk' },
+                        { version: 4, name: '4', path: '/4/app.apk' },
                         { version: 3, name: '3', path: '/3/app.apk' },
-                        { version: 4, name: '4', path: '/4/app.apk' }
+                        { version: 2, name: '2', path: '/2/app.apk' },
+                        { version: 1, name: '1', path: '/1/app.apk' },
                     ]
                 };
             }
         }).mount('#app');
     </script>
 </body>
+
 </html>
