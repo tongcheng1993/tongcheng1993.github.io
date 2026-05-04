@@ -1,87 +1,147 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-	<meta name="keywords" content="学习">
-	<meta name="description" content="学习">
-	<title>index</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="icon" href="/favicon.ico">
-	<link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.14/lib/theme-chalk/index.css">
-	<link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
-	<script src="https://unpkg.com/vue@2.7.16/dist/vue.min.js"></script>
-	<script src="https://unpkg.com/element-ui@2.15.14/lib/index.js"></script>
-	<script src="https://unpkg.com/axios@0.21.4/dist/axios.min.js"></script>
-	<script src="https://unpkg.com/screenfull@5.2.0/dist/screenfull.js"></script>
-	<script src="https://unpkg.com/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
-	<script src="https://unpkg.com/stompjs@2.3.3/lib/stomp.min.js"></script>
-	<script src="https://unpkg.com/phaser@3.90.0/dist/phaser.min.js"></script>
-	<style>
-		[v-cloak] {
-			display: none !important;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK版本下载 - Vue3列表</title>
+    <script src="https://unpkg.com/vue@3.5.33/dist/vue.global.js"></script>
+    <style>
+        /* 简单 CSS 样式，提升视觉体验 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fb;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .app-container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+        }
+        .sub {
+            color: #5b6e8c;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            padding-left: 1rem;
+        }
+        ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        li {
+            background: #f8fafc;
+            border-radius: 16px;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+        li:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+        a {
+            display: block;
+            padding: 0.9rem 1.2rem;
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e40af;
+            font-size: 1rem;
+            transition: 0.2s;
+            border-radius: 16px;
+        }
+        a:hover {
+            color: #1d4ed8;
+            background: #ffffff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .path-hint {
+            font-size: 0.75rem;
+            color: #5b6e8c;
+            font-family: monospace;
+            margin-top: 4px;
+            display: inline-block;
+            background: #eef2ff;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+        /* 为每个链接里的文件路径做点缀 */
+        .version-name {
+            font-weight: 600;
+            margin-right: 12px;
+        }
+        .footer-note {
+            margin-top: 1.8rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9edf2;
+            font-size: 0.8rem;
+            color: #6c7a91;
+            text-align: center;
+        }
+        @media (max-width: 480px) {
+            .app-container {
+                padding: 1.2rem;
+            }
+            a {
+                padding: 0.7rem 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-	<div v-cloak id="app">
-		<ul>
-			<li v-for="(item,index) in list" @click="handleClick(item)">
-				{{item.name}}
-			</li>
-		</ul>
-		<el-button type="primary" @click="activeButton" :loading="loading">确认</el-button>
-		<a href="/data/test/app-debug.apk">测试apk</a>
-	</div>
+    <div id="app">
+        <div class="app-container">
+            <h3>📦 APK 版本选择</h3>
+            <div class="sub">点击链接直接下载安装包</div>
+            <ul>
+                <li v-for="item in list" :key="item.version">
+                    <a :href="item.path" download>
+                        <span class="version-name">{{ item.name }}</span>
+                        <span class="path-hint">{{ item.path }}</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="footer-note">
+                💡 提示：若浏览器未自动下载，可右键链接选择“另存为”
+            </div>
+        </div>
+    </div>
 
-
-	<script type="text/javascript">
-		Vue.use(ELEMENT);
-		var vm = new Vue({
-			data: {
-				selectCode: "",
-				loading: false,
-				list: [
-					{
-						code: "1",
-						name: "1服务器"
-					},
-					{
-						code: "2",
-						name: "1服务器"
-					},
-					{
-						code: "3",
-						name: "1服务器"
-					},
-				]
-			},
-			methods: {
-				handleClick: function (scope) {
-					this.$message.success("选择了" + scope.name);
-					this.selectCode = scope.code
-				},
-				activeButton: function () {
-					this.loading = true
-					if (this.selectCode) {
-						window.toPage('userselect', { serverCode: this.selectCode });
-					} else {
-						this.$message.error("请选择服务器");
-						this.loading = false;
-					}
-
-				}
-			},
-			watch: {
-
-			},
-			created: function () {
-
-			}
-		}).$mount('#app')
-	</script>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    list: [
+                        { version: 1, name: '1', path: '/1/app.apk' },
+                        { version: 2, name: '2', path: '/2/app.apk' },
+                        { version: 3, name: '3', path: '/3/app.apk' },
+                        { version: 4, name: '4', path: '/4/app.apk' }
+                    ]
+                };
+            }
+        }).mount('#app');
+    </script>
 </body>
-
 </html>
